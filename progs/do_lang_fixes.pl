@@ -52,15 +52,16 @@ sub main
 	# s|£|&\#x00A3;|g;
         # $_ = restructure::delabel($_);	
 	# $tagname = restructure::get_tagname($bit);    
-	if (0)
+	if (1)
 	{
 	    s|> or <|> ή ££1£ <|g;
 	    s|genpunc>mainly|genpunc>κυρίως ££2£|g;
 	    s|genpunc>often|genpunc>συνήθως ££3£|g;
+	} else {
+	    s|> or <|> ή <|g;
+	    s|genpunc>mainly|genpunc>κυρίως|g;
+	    s|genpunc>often|genpunc>συνήθως|g;
 	}
-	s|> or <|> ή <|g;
-	s|genpunc>mainly|genpunc>κυρίως|g;
-	s|genpunc>often|genpunc>συνήθως|g;
 	s|(<genpunc[^>]*>);( *</genpunc>)|\1,\2|gi;
 	print $_;
 	if ($opt_O){printf(bugout_fp "%s\n", $_);}
